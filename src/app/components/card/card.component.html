@@ -1,0 +1,13 @@
+<div class="card" *ngIf="content">
+
+  <div *ngFor="let recipe of content">
+    <h1>{{ recipe.nome }}</h1>
+    <div class="info" *ngFor="let secao of recipe.secao">
+      <h2>{{ secao.nome }}</h2>
+      <ul *ngFor="let item of secao.conteudo">
+        <li>{{item}}</li>
+      </ul>
+    </div>
+  </div>
+
+</div>

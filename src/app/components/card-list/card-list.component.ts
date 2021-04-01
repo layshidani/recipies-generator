@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import * as data from '../../../../data/afrodite.json';
-
 
 @Component({
   selector: 'app-card-list',
@@ -14,8 +13,6 @@ export class CardListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
-    console.warn('content', this.content);
 
   }
 
