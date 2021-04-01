@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { CardListComponent } from './card-list/card-list.component';
+import { CardListComponent } from './components/card-list/card-list.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardListComponent
+    CardListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

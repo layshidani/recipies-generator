@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import * as data from '../../../data/afrodite.json';
+import * as data from '../../../../data/afrodite.json';
 
 
 @Component({
