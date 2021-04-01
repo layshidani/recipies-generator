@@ -124,5 +124,10 @@
       }
     }
   },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "css"
+    }
+  },
   "defaultProject": "recipes-generator"
 }
