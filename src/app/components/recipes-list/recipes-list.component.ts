@@ -4,11 +4,11 @@ import * as data from '../../../../data/afrodite.json';
 
 @Component({
   selector: 'app-card-list',
-  templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.css']
+  templateUrl: './recipes-list.component.html',
+  styleUrls: ['./recipes-list.component.css']
 })
-export class CardListComponent implements OnInit {
-  public content = data['default'].slice(0, 10);
+export class RecipesListComponent implements OnInit {
+  public recipes = data['default'].slice(0, 10);
 
   constructor() { }
 
