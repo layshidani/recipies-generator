@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  templateUrl: './recipe-card.component.html',
+  styleUrls: ['./recipe-card.component.css']
 })
 
-export class CardComponent implements OnInit {
+export class RecipesCardComponent implements OnInit {
 
   @Input()
   content: any;
