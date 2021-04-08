@@ -6,14 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipesListComponent } from './components/recipes-list/recipes-list.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { RecipesCardComponent } from './components/recipe-card/recipe-card.component'
+import { RecipesCardComponent } from './components/recipe-card/recipe-card.component';
+import { RecipeRandomComponent } from './components/recipe-random/recipe-random.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipesListComponent,
     NavbarComponent,
-    RecipesCardComponent
+    RecipesListComponent,
+    RecipesCardComponent,
+    RecipeRandomComponent
   ],
   imports: [
     BrowserModule,
