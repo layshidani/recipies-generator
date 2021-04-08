@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import * as data from '../../../../data/afrodite.json';
+import { RecipesService } from '../../services/recipes.service'
 
 @Component({
   selector: 'app-card-list',
@@ -8,9 +7,12 @@ import * as data from '../../../../data/afrodite.json';
   styleUrls: ['./recipes-list.component.scss']
 })
 export class RecipesListComponent implements OnInit {
-  public recipes = data['default'].slice(0, 10);
 
-  constructor() { }
+  constructor(
+    private recipesService: RecipesService
+  ) { }
+
+  public recipes = this.recipesService.getRecipesQuantity(5);
 
   ngOnInit(): void {
 
