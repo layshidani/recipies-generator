@@ -1,3 +1,5 @@
-<div class="card-list" *ngIf="recipes">
-  <app-card [content]="recipes"></app-card>
+<div class="card-list" *ngFor="let recipe of recipes">
+
+  <app-card class="card" [content]="recipe"></app-card>
+
 </div>
