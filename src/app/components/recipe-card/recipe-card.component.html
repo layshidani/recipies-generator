@@ -1,11 +1,17 @@
 <div class="card" *ngIf="content">
 
-    <h1>{{ content.nome }}</h1>
-    <div class="info" *ngFor="let secao of content.secao">
-      <h2>{{ secao.nome }}</h2>
-      <ul *ngFor="let item of secao.conteudo">
-        <li>{{item}}</li>
-      </ul>
+    <h1>{{ content.name }}</h1>
+    <img [src]="content.thumbnail_url" alt="recipe photo">
+
+    <div id="hating">
+      <div id="score">
+        <i class="fas fa-star"></i>
+        <span>{{ content?.user_ratings?.score || 0 }}</span>
+      </div>
+      <div id="count_positive">
+        <i class="fas fa-heart"></i>
+        <span>{{ content?.user_ratings?.count_positive || 0 }}</span>
+      </div>
     </div>
 
 </div>

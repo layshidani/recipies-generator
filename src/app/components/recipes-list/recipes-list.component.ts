@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { RecipesService } from '../../services/recipes.service'
 
 @Component({
@@ -12,10 +12,13 @@ export class RecipesListComponent implements OnInit {
     private recipesService: RecipesService
   ) { }
 
-  public recipes = this.recipesService.getRecipesQuantity(5);
+  public recipes: any[]
 
   ngOnInit(): void {
-
+    this.recipesService.getRecipesQuantity(10)
+      .subscribe(data => {
+        this.recipes = data
+      })
   }
 
 }

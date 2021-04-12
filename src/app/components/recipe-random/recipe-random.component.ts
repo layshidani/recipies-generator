@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 import { RecipesService } from '../../services/recipes.service'
 
 @Component({
@@ -8,19 +8,20 @@ import { RecipesService } from '../../services/recipes.service'
 })
 export class RecipeRandomComponent implements OnInit {
   @Input()
-  recipe: any;
+  recipe: any
 
   constructor(
     private recipesService: RecipesService
   ) { }
 
   ngOnInit(): void {
-    this.recipe = this.recipesService.getRecipeById(1);
+    this.recipe = this.recipesService.getRecipeById(1)
   }
 
   protected randomRecipe() {
-    console.warn('getRecipeById');
-
-    this.recipe = this.recipesService.getRandomRecipe();
+    this.recipe = this.recipesService.getRandomRecipe()
+      .subscribe(data => {
+        this.recipe = data
+      })
   }
 }

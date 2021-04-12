@@ -1,30 +1,65 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 
-import * as data from '../../../data/afrodite.json';
+import { tap, map } from 'rxjs/operators'
+
+import { Observable, of } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesService {
-  private recipes = data['default'];
+  public recipes
+  private RECIPES_API_URL = 'https://tasty.p.rapidapi.com/recipes/list';
+  private RECIPES_API_OPTIONS = {
+    // params: {
+    // 'from': '0',
+    // 'size': '20',
+    // 'tags': 'under_30_minutes'
+    // },
+    headers: new HttpHeaders({
+      'x-rapidapi-key': '9db33897d8mshee177f0734b281cp1a4908jsn01ea1d02b356',
+      'x-rapidapi-host': 'tasty.p.rapidapi.com',
+      'useQueryString': 'true'
+    })
+  };
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  public getAllRecipes(): [] {
-    return this.recipes.slice(0, 10);
+  public getAllRecipes(): Observable<any[]> {
+    return this.http.get(this.RECIPES_API_URL, this.RECIPES_API_OPTIONS)
+      .pipe(map(
+        data => this.recipes = data['results']))
   }
 
-  public getRecipesQuantity(quantity: number): [] {
-    return this.recipes.slice(0, quantity);
+  public getRecipesQuantity(quantity: number): Observable<any[]> {
+    const newOptions = { ...this.RECIPES_API_OPTIONS, params: { size: quantity.toString() } }
+
+    return this.http.get(this.RECIPES_API_URL, newOptions)
+      .pipe(map(
+        data => this.recipes = data['results']))
   }
 
-  public getRecipeById(id: number): [] {
-    return this.recipes[id];
+  public getRecipeById(id: number): Observable<any[]> {
+    return this.http.get(this.RECIPES_API_URL, this.RECIPES_API_OPTIONS)
+      .pipe(
+        map(data => this.recipes = data['results'][id]),
+        tap(data => console.warn(data, this.recipes)
+        )
+      )
   }
 
-  public getRandomRecipe() {
-    const id = Array.isArray(this.recipes) ? Math.floor(Math.random() * this.recipes.length) : 0;
+  // TODO FIX
+  public getRandomRecipe(): Observable<any[]> {
+    this.getAllRecipes()
+      .subscribe(data => {
+        this.recipes = data['results']
+      })
 
-    return this.getRecipeById(id);
+    const id = Array.isArray(this.recipes) ? Math.floor(Math.random() * this.recipes.length) : 0
+
+    return this.getRecipeById(id)
   }
 }
